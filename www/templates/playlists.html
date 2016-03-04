@@ -1,0 +1,47 @@
+<ion-view view-title="Playlists">
+    <ion-content>
+        <div class="container">
+            <div class="question-container">
+                <div class="question">
+                    <div ng-if="questionAsked == true">
+                        <span>{{currQuestion.question}}</span>
+                    </div>
+                    <div ng-if="questionAsked == false">
+                        <span>{{currQuestion.description}}</span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="avatar-container">
+                <div ng-if="questionAsked == false">
+                    <div class="avatar" ng-click="askQuestion()">
+                        <div>
+                            <img src="../img/frame0.gif" ng-show="!gif">
+                        </div>
+                        <div>
+                            <img src="../img/Elmo_shakes_it.gif" ng-show="gif">
+                        </div>
+                        <div class="avatar-message">
+                            <span>Shake me for the question</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="questionAsked == true">
+                    <div class="avatar" ng-click="answerQuestion()">
+                        <div>
+                            <img src="../img/frame0.gif" ng-show="!gif">
+                        </div>
+                        <div>
+                            <img src="../img/Elmo_shakes_it.gif" ng-show="gif">
+                        </div>
+                        <div class="avatar-message">
+                            <span>Shake me for the answer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
