@@ -1,47 +1,119 @@
-<ion-view view-title="Playlists">
-    <ion-content>
+<ion-view view-title="Quiz Page">
+    <ion-content scroll="false">
+        <!--
+        <div class="first-time-message" ng-show="!hasStartedPlaying">
+            <h1>Welcome to black magic</h1>
+            <p>to start playing press the button below and test your knowledge of black people!!!</p>
+            <div class="row" style="text-align:center">
+                <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
+            </div>
+        </div>
+-->
         <div class="container">
             <div class="question-container">
-                <div class="question">
-                    <div ng-if="questionAsked == true">
-                        <span>{{currQuestion.question}}</span>
+                <div style="display:table-row">
+                    <div class="question">
+                        <div ng-if="questionAsked == true">
+                            <span>{{currQuestion.question}}</span>
+                        </div>
+                        <div ng-if="questionAsked == false">
+                            <span>{{currQuestion.answer}}</span>
+                        </div>
                     </div>
-                    <div ng-if="questionAsked == false">
-                        <span>{{currQuestion.description}}</span>
-                    </div>
-
                 </div>
-
+                <div style="display: table-row" class="background-pane">
+                    <div ng-if="questionAsked == false" class="row right-footer" ng-click="modal.show()">
+                        <span>Click to Learn More</span>
+                    </div>
+                </div>
             </div>
-            <div class="avatar-container">
+            <div class="answer-choices-container">
+                <div ng-if="questionAsked == true">
+                    <div class="row">
+                        <div class="answer-choices">
+                            <span>{{currQuestion.choice1}}</span>
+                        </div>
+                        <div class="answer-choices">
+                            <span>{{currQuestion.choice2}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="answer-choices">
+                            <span>{{currQuestion.choice3}}</span>
+                        </div>
+                        <div class="answer-choices">
+                            <span>{{currQuestion.choice4}}</span>
+                        </div>
+                    </div>
+                </div>
                 <div ng-if="questionAsked == false">
+                    <div class="row">
+                        <button ng-disabled="questionAnswered" class="answer-choices" ng-click="gotItRight(yes)">
+                            <span>Right</span>
+                        </button>
+                        <button ng-disabled="questionAnswered" class="answer-choices" ng-click="gotItRight(no)">
+                            <span>Wrong</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="avatar-container" ng-if="hasFinishedPlaying == false">
+                <div ng-if="questionAsked == false && hasFinishedPlaying == false ">
                     <div class="avatar" ng-click="askQuestion()">
                         <div>
-                            <img src="../img/frame0.gif" ng-show="!gif">
+                            <img src="img/frame0.gif" ng-show="!gif">
                         </div>
                         <div>
-                            <img src="../img/Elmo_shakes_it.gif" ng-show="gif">
+                            <img src="img/Elmo_shakes_it.gif" ng-show="gif">
                         </div>
                         <div class="avatar-message">
                             <span>Shake me for the question</span>
                         </div>
                     </div>
                 </div>
-                <div ng-if="questionAsked == true">
+                <div ng-if="questionAsked == true && hasFinishedPlaying == false">
                     <div class="avatar" ng-click="answerQuestion()">
                         <div>
-                            <img src="../img/frame0.gif" ng-show="!gif">
+                            <img src="img/frame0.gif" ng-show="!gif">
                         </div>
                         <div>
-                            <img src="../img/Elmo_shakes_it.gif" ng-show="gif">
+                            <img src="img/Elmo_shakes_it.gif" ng-show="gif">
                         </div>
                         <div class="avatar-message">
                             <span>Shake me for the answer</span>
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div ng-if="hasFinishedPlaying == true">
+                <h1>Thank you for playing black magic</h1>
+                <p>You scored {{score}}/{{quizLength}}</p>
+                <div class="row" style="text-align:center">
+                    <button class="button start-playing-button" ng-click="">Press me to start over</button>
+                </div>
             </div>
         </div>
     </ion-content>
 </ion-view>
+
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <!--
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New Contact</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+-->
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        <ion-content class="padding has-header">
+            <span>{{currQuestion.dateDescription}}</span>
+            <h3>{{currQuestion.shortDescription}}</h3>
+
+            <span>{{currQuestion.info}}</span>
+            <p>{{currQuestion.longDescription}}</p>
+            <blockquote>
+                <p>{{currQuestion.quote}}</p>
+            </blockquote>
+        </ion-content>
+    </ion-modal-view>
+</script>

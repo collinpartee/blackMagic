@@ -1,5 +1,21 @@
 <ion-view view-title="Search">
-  <ion-content>
-    <h1>Search</h1>
-  </ion-content>
+    <ion-content>
+        <h1>Search</h1>
+
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Frequency</span>
+                <input type="text" placeholder="0" ng-model="options.frequency">
+            </label>
+        </div>
+        <button class="button button-full button-positive" ng-click="startWatching()">
+            Start Measurement
+        </button>
+        <button class="button button-full button-positive" ng-click="stopWatching()">
+            Stop Measurement
+        </button>
+        <h2>X: {{measurements.x}}</h2>
+        <h2>Y: {{measurements.y}}</h2>
+        <h2>Z: {{measurements.z}}</h2>
+    </ion-content>
 </ion-view>
