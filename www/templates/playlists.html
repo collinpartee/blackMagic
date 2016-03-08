@@ -1,16 +1,16 @@
 <ion-view view-title="Quiz Page">
     <ion-content scroll="false">
-        <!--
-        <div class="first-time-message" ng-show="!hasStartedPlaying">
+        
+        <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
             <h1>Welcome to black magic</h1>
             <p>to start playing press the button below and test your knowledge of black people!!!</p>
             <div class="row" style="text-align:center">
                 <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
             </div>
         </div>
--->
+
         <div class="container">
-            <div class="question-container">
+            <div class="question-container" ng-hide="hasStartedPlaying == 'almost' ">
                 <div style="display:table-row">
                     <div class="question">
                         <div ng-if="questionAsked == true">
@@ -27,23 +27,23 @@
                     </div>
                 </div>
             </div>
-            <div class="answer-choices-container">
+            <div class="answer-choices-container" ng-hide="hasStartedPlaying == 'almost' ">
                 <div ng-if="questionAsked == true">
                     <div class="row">
                         <button class="answer-choices" ng-click="chooseChoice1()" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
                             <span>{{currQuestion.choice1}}</span>
                         </button>
-                        <div class="answer-choices" ng-click="chooseChoice2()" ng-class="{'selected': choice2Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice2()" ng-class="{'selected': choice2Selected}">
                             <span>{{currQuestion.choice2}}</span>
-                        </div>
+                        </button>
                     </div>
                     <div class="row">
-                        <div class="answer-choices" ng-click="chooseChoice3()" ng-class="{'selected': choice3Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice3()" ng-class="{'selected': choice3Selected}">
                             <span>{{currQuestion.choice3}}</span>
-                        </div>
-                        <div class="answer-choices" ng-click="chooseChoice4()" ng-class="{'selected': choice4Selected}">
+                        </button>
+                        <button class="answer-choices" ng-click="chooseChoice4()" ng-class="{'selected': choice4Selected}">
                             <span>{{currQuestion.choice4}}</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
 -->
         <button class="button button-clear button-primary" ng-click="modal.hide()">Close</button>
         <ion-content class="padding has-header">
-            <img class="decription-image" src="img/4_jackieRobinson.jpg" />
+            <img class="decription-image" src="{{currQuestion.imageUrl}}" />
             <span>{{currQuestion.dateDescription}}</span>
             <h3 style="margin-top: 7px;">{{currQuestion.shortDescription}}</h3>
 
