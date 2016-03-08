@@ -30,35 +30,36 @@
             <div class="answer-choices-container">
                 <div ng-if="questionAsked == true">
                     <div class="row">
-                        <div class="answer-choices">
+                        <button class="answer-choices" ng-click="chooseChoice1()" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
                             <span>{{currQuestion.choice1}}</span>
-                        </div>
-                        <div class="answer-choices">
+                        </button>
+                        <div class="answer-choices" ng-click="chooseChoice2()" ng-class="{'selected': choice2Selected}">
                             <span>{{currQuestion.choice2}}</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="answer-choices">
+                        <div class="answer-choices" ng-click="chooseChoice3()" ng-class="{'selected': choice3Selected}">
                             <span>{{currQuestion.choice3}}</span>
                         </div>
-                        <div class="answer-choices">
+                        <div class="answer-choices" ng-click="chooseChoice4()" ng-class="{'selected': choice4Selected}">
                             <span>{{currQuestion.choice4}}</span>
                         </div>
                     </div>
                 </div>
+
                 <div ng-if="questionAsked == false">
                     <div class="row">
-                        <button ng-disabled="questionAnswered" class="answer-choices" ng-click="gotItRight(yes)">
-                            <span>Right</span>
-                        </button>
-                        <button ng-disabled="questionAnswered" class="answer-choices" ng-click="gotItRight(no)">
-                            <span>Wrong</span>
-                        </button>
+                        <span ng-show="youGotItRight">Points For You!</span>
+                        <span ng-show="!youGotItRight">No Points For You</span>
+                    </div>
+                    <div class="row">
+                        <span>Your Score: {{score}}</span>
                     </div>
                 </div>
+
             </div>
             <div class="avatar-container" ng-if="hasFinishedPlaying == false">
-                <div ng-if="questionAsked == false && hasFinishedPlaying == false ">
+                <div ng-if="questionAsked == false ">
                     <div class="avatar" ng-click="askQuestion()">
                         <div>
                             <img src="img/frame0.gif" ng-show="!gif">
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="questionAsked == true && hasFinishedPlaying == false">
+                <div ng-if="questionAsked == true">
                     <div class="avatar" ng-click="answerQuestion()">
                         <div>
                             <img src="img/frame0.gif" ng-show="!gif">
@@ -79,17 +80,18 @@
                         <div>
                             <img src="img/Elmo_shakes_it.gif" ng-show="gif">
                         </div>
-                        <div class="avatar-message">
+                        <div class="avatar-message" ng-show="showAvatarAnswerMessage">
                             <span>Shake me for the answer</span>
                         </div>
                     </div>
                 </div>
+                {{score}}
             </div>
             <div ng-if="hasFinishedPlaying == true">
                 <h1>Thank you for playing black magic</h1>
                 <p>You scored {{score}}/{{quizLength}}</p>
                 <div class="row" style="text-align:center">
-                    <button class="button start-playing-button" ng-click="">Press me to start over</button>
+                    <button class="button start-playing-button" ng-click="startOver()">Press me to start over</button>
                 </div>
             </div>
         </div>
@@ -104,16 +106,19 @@
           <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
         </ion-header-bar>
 -->
-        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Close</button>
         <ion-content class="padding has-header">
+            <img class="decription-image" src="img/4_jackieRobinson.jpg" />
             <span>{{currQuestion.dateDescription}}</span>
-            <h3>{{currQuestion.shortDescription}}</h3>
+            <h3 style="margin-top: 7px;">{{currQuestion.shortDescription}}</h3>
 
             <span>{{currQuestion.info}}</span>
             <p>{{currQuestion.longDescription}}</p>
-            <blockquote>
-                <p>{{currQuestion.quote}}</p>
-            </blockquote>
+            <div ng-if="currQuestion.quote.length > 1">
+                <blockquote>
+                    <p>{{currQuestion.quote}}</p>
+                </blockquote>
+            </div>
         </ion-content>
     </ion-modal-view>
 </script>

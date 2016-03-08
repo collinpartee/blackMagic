@@ -58,18 +58,20 @@
 
 .answer-choices-container{
     height: 20%;
-    background-color: aqua;
+/*    background-color: aqua;*/
     padding-top: 1rem;
+    border: 2px solid black;
 }
 
 .answer-choices{
-    background-color: white;
+    background-color: whitesmoke;
+    border: 1px solid black;
     border-radius: 20px;
     text-align: center;
     padding: .5rem;
     width: 48%;
     margin-left: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 .avatar-message {
@@ -106,4 +108,15 @@ ion-content {
 .start-playing-button {
     width: 80%;
     margin: 0 auto;
+}
+
+.selected{
+    background-color: green !important;
+    color: white !important;
+}
+
+.decription-image {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
 }

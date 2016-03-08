@@ -20,7 +20,13 @@ angular.module('starter.controllers', [])
     $scope.currQuestion = "none";
     $scope.hasStartedPlaying = false;
     $scope.hasFinishedPlaying = false;
-    
+    $scope.choice1Selected = false;
+    $scope.choice2Selected = false;
+    $scope.choice3Selected = false;
+    $scope.choice4Selected = false;
+    $scope.showAvatarAnswerMessage = false;
+    $scope.youGotItRight = false;
+
 
     $scope.score = 0;
     $scope.quizLength = 3;
@@ -370,6 +376,69 @@ angular.module('starter.controllers', [])
     ];
 
 
+    $scope.chooseChoice1 = function () {
+        $scope.choice1Selected = true;
+        $scope.choice2Selected = false;
+        $scope.choice3Selected = false;
+        $scope.choice4Selected = false;
+        $scope.showAvatarAnswerMessage = true;
+
+        if ($scope.currQuestion.answer == $scope.currQuestion.choice1) {
+            console.log("you got it right");
+            $scope.youGotItRight = true;
+        } else {
+            console.log("you wrong bro");
+            $scope.youGotItRight = false;
+        }
+
+    }
+    $scope.chooseChoice2 = function () {
+        $scope.choice1Selected = false;
+        $scope.choice2Selected = true;
+        $scope.choice3Selected = false;
+        $scope.choice4Selected = false;
+        $scope.showAvatarAnswerMessage = true;
+
+        if ($scope.currQuestion.answer == $scope.currQuestion.choice2) {
+            console.log("you got it right");
+            $scope.youGotItRight = true;
+        } else {
+            console.log("you wrong bro");
+            $scope.youGotItRight = false;
+        }
+
+    }
+    $scope.chooseChoice3 = function () {
+        $scope.choice1Selected = false;
+        $scope.choice2Selected = false;
+        $scope.choice3Selected = true;
+        $scope.choice4Selected = false;
+        $scope.showAvatarAnswerMessage = true;
+
+        if ($scope.currQuestion.answer == $scope.currQuestion.choice3) {
+            console.log("you got it right");
+            $scope.youGotItRight = true;
+        } else {
+            console.log("you wrong bro");
+            $scope.youGotItRight = false;
+        }
+    }
+    $scope.chooseChoice4 = function () {
+        $scope.choice1Selected = false;
+        $scope.choice2Selected = false;
+        $scope.choice3Selected = false;
+        $scope.choice4Selected = true;
+        $scope.showAvatarAnswerMessage = true;
+
+        if ($scope.currQuestion.answer == $scope.currQuestion.choice4) {
+            console.log("you got it right");
+            $scope.youGotItRight = true;
+        } else {
+            console.log("you wrong bro");
+            $scope.youGotItRight = false;
+        }
+    }
+
     //making the gif animate and stop after 2000 ms
     function showGif() {
         $scope.gif = true;
@@ -381,9 +450,17 @@ angular.module('starter.controllers', [])
     }
 
     $scope.askQuestion = function () {
+        $scope.choice1Selected = false;
+        $scope.choice2Selected = false;
+        $scope.choice3Selected = false;
+        $scope.choice4Selected = false;
         var chosenQuestion = Math.floor(Math.random() * (sportsQuestions.length - 0)) + 0;
-        console.log("chosenQuestion " + chosenQuestion);
+        //        console.log("chosenQuestion " + chosenQuestion);
 
+        $scope.youGotItRight = false;
+
+        $scope.currQuizNumber++;
+        console.log("currQuizNumber " + $scope.currQuizNumber);
         $scope.currQuestion = sportsQuestions[chosenQuestion];
 
         $scope.questionAsked = true;
@@ -401,8 +478,14 @@ angular.module('starter.controllers', [])
         $scope.questionAnswered = false;
         $scope.gif = true;
 
-        $scope.currQuizNumber++;
-        console.log("currQuizNumber " + $scope.currQuizNumber);
+        if ($scope.youGotItRight == true) {
+            console.log("points for you!");
+            $scope.score++;
+        }
+
+        if ($scope.currQuizNumber == $scope.quizLength) {
+            $scope.hasFinishedPlaying = true;
+        }
 
         $timeout(function hideTheGif() {
             $scope.gif = false;
@@ -410,21 +493,11 @@ angular.module('starter.controllers', [])
 
     }
 
-    $scope.gotItRight = function (result) {
+    $scope.startOver = function () {
 
-        if(result == "yes"){
-        $scope.score++;
-        }
-        $scope.questionAnswered = true;
-        
-        console.log("hasFinishedPlaying: " + $scope.hasFinishedPlaying);
-        
-        if($scope.currQuizNumber == $scope.quizLength){
-            $scope.hasFinishedPlaying = true;
-            console.log("hasFinishedPlaying: " + $scope.hasFinishedPlaying);
-        }
-        
-
+        $scope.currQuizNumber = 0;
+        $scope.hasFinishedPlaying = false;
+        $scope.score = 0;
     }
 
 
