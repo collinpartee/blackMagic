@@ -1,11 +1,11 @@
 <ion-view view-title="Quiz Page">
     <ion-content scroll="false">
-        
+
         <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
             <h1>Welcome to black magic</h1>
             <p>to start playing press the button below and test your knowledge of black people!!!</p>
             <div class="row" style="text-align:center">
-                <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
+                <button class="button start-playing-button" ng-click="startPlaying(); shakeMotionFunction(q)">Press me to start</button>
             </div>
         </div>
 

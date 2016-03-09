@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
             dateDescription: 'Feb 21 1965',
             shortDescription: 'Malcolm X Assassinated in Manhattan\'s Audubon Ballroom',
             info: 'On February 21, 1965, in Manhattan\'s Audubon Ballroom, Malcolm X began to speak to a meeting of the Organization of Afro-American Unity when a disturbance broke out in the crowd of 400.',
-            longDescription: 'A man yelled, "Nigger! Get your hand outta my pocket!" As Malcolm X and his bodyguards moved to quiet the disturbance, a man rushed forward and shot him in the chest with a sawed-off shotgun. Two other men charged the stage and fired handguns, hitting him 16 times. Angry onlookers caught and beat one of the assassins as the others fled the ballroom. Malcolm X was pronounced dead shortly after he arrived at Columbia Presbyterian Hospital. \n\n Talmadge Hayer, a Black Muslim also known as Thomas Hagan, was arrested on the scene. Eyewitnesses identified two more suspects, Norman 3X Butler and Thomas 15X Johnson, also members of the Nation of Islam. All three were charged in the case. At first Hayer denied involvement, but during the trial he confessed to having fired shots into Malcolm X\'s body. He testified that Butler and Johnson were not present and were not involved in the assassination, but he declined to name the men who had joined him in the shooting. All three men were convicted.\n\n Butler, now known as Muhammad Abdul Aziz, was paroled in 1985. He became the head of the Nation of Islam\'s Harlem mosque in New York in 1998. He continues to maintain his innocence.Johnson, now known as Khalil Islam, was released from prison in 1987. During his time in prison, he rejected the teachings of the Nation of Islam and converted to Sunni Islam. He, too, maintains his innocence. Hayer, now known as Mujahid Halim, was paroled in 1993.',
+            longDescription: ["'A man yelled, 'Nigger! Get your hand outta my pocket!' As Malcolm X and his bodyguards moved to quiet the disturbance, a man rushed forward and shot him in the chest with a sawed-off shotgun. Two other men charged the stage and fired handguns, hitting him 16 times. Angry onlookers caught and beat one of the assassins as the others fled the ballroom. Malcolm X was pronounced dead shortly after he arrived at Columbia Presbyterian Hospital.", "Talmadge Hayer, a Black Muslim also known as Thomas Hagan, was arrested on the scene. Eyewitnesses identified two more suspects, Norman 3X Butler and Thomas 15X Johnson, also members of the Nation of Islam. All three were charged in the case. At first Hayer denied involvement, but during the trial he confessed to having fired shots into Malcolm X\'s body. He testified that Butler and Johnson were not present and were not involved in the assassination, but he declined to name the men who had joined him in the shooting. All three men were convicted.\n\n Butler, now known as Muhammad Abdul Aziz, was paroled in 1985. He became the head of the Nation of Islam\'s Harlem mosque in New York in 1998. He continues to maintain his innocence.Johnson, now known as Khalil Islam, was released from prison in 1987. During his time in prison, he rejected the teachings of the Nation of Islam and converted to Sunni Islam. He, too, maintains his innocence. Hayer, now known as Mujahid Halim, was paroled in 1993."],
             answer: 'Audobon Ballroom, Manhattan',
             imageUrl: 'img/fact-images/Malcolm-X-9.jpg'
         },
@@ -90,7 +90,7 @@ angular.module('starter.controllers', [])
             shortDescription: 'The slave population in the United States had grown to four million by the 1860 Census.',
             info: '',
             longDescription: '',
-            answer: 'About 4 million',
+            answer: 'About 4 Million',
             imageUrl: 'img/fact-images/slavery.jpg'
         },
         {
@@ -527,6 +527,13 @@ angular.module('starter.controllers', [])
     }
 
 
+    $scope.shakeMotionFunction = function (question) {
+        $scope.startWatching();
+
+        $scope.askQuestion();
+
+    }
+
 
     //code for ionic modal
     $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -558,6 +565,7 @@ angular.module('starter.controllers', [])
         timestamp: null
     }
 
+    $scope.weHaveShake = 'sorry no shake for you';
     //Start Watching method
     $scope.startWatching = function () {
 
@@ -603,7 +611,13 @@ angular.module('starter.controllers', [])
         if (measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation) {
             $scope.stopWatching(); // Stop watching because it will start triggering like hell
             console.log('Shake detected'); // shake detected
-            setTimeout($scope.startWatching(), 1000); // Again start watching after 1 sex
+            $scope.weHaveShake = 'Yes we have shake';
+            $scope.gif = true;
+
+            $timeout(function hideTheGif() {
+                $scope.gif = false;
+            }, 2000);
+            setTimeout($scope.stopWatching(), 2000); // Again start watching after 1 sex
 
             // Clean previous measurements after succesfull shake detection, so we can do it next time
             $scope.previousMeasurements = {
