@@ -528,9 +528,9 @@ angular.module('starter.controllers', [])
 
 
     $scope.shakeMotionFunction = function (question) {
-        $scope.startWatching();
+        $scope.startWatching(question);
 
-        $scope.askQuestion();
+        //        $scope.askQuestion();
 
     }
 
@@ -567,7 +567,7 @@ angular.module('starter.controllers', [])
 
     $scope.weHaveShake = 'sorry no shake for you';
     //Start Watching method
-    $scope.startWatching = function () {
+    $scope.startWatching = function (question) {
 
         // Device motion configuration
         $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
@@ -583,8 +583,8 @@ angular.module('starter.controllers', [])
             $scope.measurements.z = result.z;
             $scope.measurements.timestamp = result.timestamp;
 
-            // Detecta shake  
-            $scope.detectShake(result);
+            // Detect a shake  
+            $scope.detectShake(result, question);
 
         });
     };
@@ -593,9 +593,9 @@ angular.module('starter.controllers', [])
     $scope.stopWatching = function () {
         $scope.watch.clearWatch();
     }
-
+    $scope.canShake = false;
     // Detect shake method      
-    $scope.detectShake = function (result) {
+    $scope.detectShake = function (result, question) {
 
         //Object to hold measurement difference between current and old data
         var measurementsChange = {};
@@ -610,6 +610,23 @@ angular.module('starter.controllers', [])
         // If measurement change is bigger then predefined deviation
         if (measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation) {
             $scope.stopWatching(); // Stop watching because it will start triggering like hell
+
+            if (question == 'q') {
+                $scope.askQuestion();
+                $scope.stopWatching();
+            }
+            if (question == 'a') {
+                $scope.answerQuestion();
+                //                $scope.stopWatching();
+
+                $timeout(function startWatchingThenStop() {
+                    $scope.startWatching('q');
+                    $scope.canShake = true;
+                    //                    $scope.stopWatching();
+                }, 5000);
+
+            }
+
             console.log('Shake detected'); // shake detected
             $scope.weHaveShake = 'Yes we have shake';
             $scope.gif = true;

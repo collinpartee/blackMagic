@@ -1,13 +1,15 @@
 <ion-view view-title="Quiz Page">
     <ion-content scroll="false">
 
+<!--
         <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
-            <h1>Welcome to black magic</h1>
-            <p>to start playing press the button below and test your knowledge of black people!!!</p>
-            <div class="row" style="text-align:center">
-                <button class="button start-playing-button" ng-click="startPlaying(); shakeMotionFunction(q)">Press me to start</button>
-            </div>
-        </div>
+    <h1>Welcome to black magic</h1>
+    <p>to start playing press the button below and test your knowledge of black people!!!</p>
+    <div class="row" style="text-align:center">
+        <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
+    </div>
+</div>
+-->
 
         <div class="container">
             <div class="question-container" ng-hide="hasStartedPlaying == 'almost' ">
@@ -30,18 +32,18 @@
             <div class="answer-choices-container" ng-hide="hasStartedPlaying == 'almost' ">
                 <div ng-if="questionAsked == true">
                     <div class="row">
-                        <button class="answer-choices" ng-click="chooseChoice1()" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice1(); shakeMotionFunction('a')" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
                             <span>{{currQuestion.choice1}}</span>
                         </button>
-                        <button class="answer-choices" ng-click="chooseChoice2()" ng-class="{'selected': choice2Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice2(); shakeMotionFunction('a')" ng-class="{'selected': choice2Selected}">
                             <span>{{currQuestion.choice2}}</span>
                         </button>
                     </div>
                     <div class="row">
-                        <button class="answer-choices" ng-click="chooseChoice3()" ng-class="{'selected': choice3Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice3(); shakeMotionFunction('a')" ng-class="{'selected': choice3Selected}">
                             <span>{{currQuestion.choice3}}</span>
                         </button>
-                        <button class="answer-choices" ng-click="chooseChoice4()" ng-class="{'selected': choice4Selected}">
+                        <button class="answer-choices" ng-click="chooseChoice4(); shakeMotionFunction('a')" ng-class="{'selected': choice4Selected}">
                             <span>{{currQuestion.choice4}}</span>
                         </button>
                     </div>
@@ -68,7 +70,7 @@
                             <img src="img/Elmo_shakes_it.gif" ng-show="gif">
                         </div>
                         <div class="avatar-message">
-                            <span>Shake me for the question</span>
+                            <span ng-show="canShake">Shake me for the question</span>
                         </div>
                     </div>
                 </div>
