@@ -1,18 +1,21 @@
 <ion-view view-title="Quiz Page">
     <ion-content scroll="false">
 
-<!--
+
         <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
-    <h1>Welcome to black magic</h1>
-    <p>to start playing press the button below and test your knowledge of black people!!!</p>
-    <div class="row" style="text-align:center">
-        <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
-    </div>
-</div>
--->
+            <h1>Welcome to black magic</h1>
+            <p>to start playing press the button below and test your knowledge of black people!!!</p>
+            <div class="row">
+                <img style="margin: 0 auto;" src="img/avatars/blinking.gif">
+            </div>
+            <div class="row" style="text-align:center">
+                <button class="button start-playing-button" ng-click="startPlaying()">Press me to start</button>
+            </div>
+        </div>
+
 
         <div class="container">
-            <div class="question-container" ng-hide="hasStartedPlaying == 'almost' ">
+            <div class="question-container" ng-show="hasStartedPlaying != 'almost' ">
                 <div style="display:table-row">
                     <div class="question">
                         <div ng-if="questionAsked == true">
@@ -30,7 +33,7 @@
                 </div>
             </div>
             <div class="answer-choices-container" ng-hide="hasStartedPlaying == 'almost' ">
-                <div ng-if="questionAsked == true">
+                <div class="animate-answer-choices" ng-if="questionAsked == true">
                     <div class="row">
                         <button class="answer-choices" ng-click="chooseChoice1(); shakeMotionFunction('a')" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
                             <span>{{currQuestion.choice1}}</span>
@@ -49,7 +52,7 @@
                     </div>
                 </div>
 
-                <div ng-if="questionAsked == false">
+                <div class="animate-point-container" ng-if="questionAsked == false">
                     <div class="row">
                         <span ng-show="youGotItRight">Points For You!</span>
                         <span ng-show="!youGotItRight">No Points For You</span>
@@ -64,10 +67,10 @@
                 <div ng-if="questionAsked == false ">
                     <div class="avatar" ng-click="askQuestion()">
                         <div>
-                            <img src="img/frame0.gif" ng-show="!gif">
+                            <img src="img/avatars/blinking.gif" ng-show="!gif">
                         </div>
                         <div>
-                            <img src="img/Elmo_shakes_it.gif" ng-show="gif">
+                            <img src="img/avatars/blinking.gif" ng-show="gif">
                         </div>
                         <div class="avatar-message">
                             <span ng-show="canShake">Shake me for the question</span>
@@ -77,10 +80,10 @@
                 <div ng-if="questionAsked == true">
                     <div class="avatar" ng-click="answerQuestion()">
                         <div>
-                            <img src="img/frame0.gif" ng-show="!gif">
+                            <img src="img/avatars/blinking.gif" ng-show="!gif">
                         </div>
                         <div>
-                            <img src="img/Elmo_shakes_it.gif" ng-show="gif">
+                            <img src="img/avatars/blinking.gif" ng-show="gif">
                         </div>
                         <div class="avatar-message" ng-show="showAvatarAnswerMessage">
                             <span>Shake me for the answer</span>
