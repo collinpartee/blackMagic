@@ -58,7 +58,7 @@ angular.module('starter.controllers', [])
             question: 'Where was Malcolm X killed?',
             choice1: 'His House, Queens',
             choice2: 'Downtown Boston',
-            choice3: 'Audubon Ballroom, Manhattan',
+            choice3: 'Audobon Ballroom, Manhattan',
             choice4: 'Massachusetts State Prison',
             dateDescription: 'Feb 21 1965',
             shortDescription: 'Malcolm X Assassinated in Manhattan\'s Audubon Ballroom',
@@ -503,6 +503,7 @@ angular.module('starter.controllers', [])
         $scope.questionAsked = false;
         $scope.questionAnswered = false;
         $scope.gif = true;
+        $scope.showAvatarAnswerMessage = false;
 
         if ($scope.youGotItRight == true) {
             console.log("points for you!");

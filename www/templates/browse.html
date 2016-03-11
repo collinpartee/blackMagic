@@ -1,5 +1,46 @@
 <ion-view view-title="Browse">
-  <ion-content>
-    <h1>Browse</h1>
-  </ion-content>
+    <ion-content>
+        <!--
+        <form class="submit-question-form">
+            <div class="row" style="margin-top: 10px;">
+                <span class="center question-submit-text">What's Your Email Address?</span>
+            </div>
+            <div class="row">
+                <input class="general-question-input" type="email" name="email">
+            </div>
+            <div class="row center-text">
+                <span class="center question-submit-text">What's Your Question?</span>
+            </div>
+            <div class="row">
+                <textarea class="general-question-input" col="9" rows="9"></textarea>
+            </div>
+            <div class="row center-text">
+                <span class="center question-submit-text">What's The Answer?</span>
+            </div>
+            <div class="row">
+                <textarea class="general-question-input" col="9" rows="9"></textarea>
+            </div>
+
+            <button class="button button-block button-positive">Submit Question</button>
+        </form>
+-->
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">I think I know you..</span>
+                <input type="text" placeholder="What's Your Email">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Great Question!</span>
+                <textarea placeholder="Whats Your Question?" rows="2"></textarea>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">I never would have guessed</span>
+                <textarea placeholder="What's the Answer?" rows="3"></textarea>
+            </label>
+        </div>
+        <form class="submit-question-form">
+
+            <button class="button button-block button-positive">Submit Question</button>
+        </form>
+    </ion-content>
 </ion-view>
