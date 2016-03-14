@@ -6,22 +6,18 @@
     position: relative;
     /*    background-image: url(../img/darkBg.png);*/
 }
-
 .question-container {
     height: 20% !important;
     display: none;
 }
-
 .avatar-container {
     height: 45%;
     text-align: center;
 }
-
 .avatar {
     padding-top: 10px;
     /*    padding-left: 35%;*/
 }
-
 .question-container {
     height: 20% !important;
     /*    background-color: cadetblue;*/
@@ -31,7 +27,6 @@
     display: table;
     width: 100%;
 }
-
 .question {
     text-align: center;
     color: black;
@@ -48,19 +43,16 @@
     vertical-align: middle;
     /*    line-height: 2rem;*/
 }
-
 .background-pane {
     background-image: url(../img/overlay70.png);
     background-size: cover;
 }
-
 .answer-choices-container {
     height: 25%;
     /*    background-color: aqua;*/
     padding-top: 1rem;
     /*    border-bottom: 2px solid black;*/
 }
-
 .answer-choices {
     background-color: whitesmoke;
     border: 1px solid black;
@@ -71,28 +63,22 @@
     margin-left: 5px;
     margin-bottom: 1rem;
 }
-
 .avatar-message {
     padding-top: 10px;
 }
-
 .avatar-image {
     height: 12rem;
 }
-
 .organizing {
     display: block;
 }
-
 .center {
     margin: 0 auto;
 }
-
 .right-footer {
     float: right;
     padding-right: 25px;
 }
-
 .first-time-message {
     position: absolute;
     top: 0;
@@ -103,31 +89,26 @@
     padding: 20px;
     /*    opacity: .5;*/
 }
-
 ion-content {
     /*
     background-image: url(../img/darkBg.png);
     background-size: cover;
 */
 }
-
 .start-playing-button {
     width: 80%;
     margin: 0 auto;
 }
-
 .selected {
     background-color: green !important;
     color: white !important;
 }
-
 .decription-image {
     max-width: 100%;
     margin: 0 auto;
     display: block;
     max-height: 40vh;
 }
-
 .headline {
     font-family: 'Quando', serif;
     font-size: 2.2rem;
@@ -135,35 +116,30 @@ ion-content {
     margin-bottom: .9rem;
     margin-top: .8rem;
 }
-
 .animate-point-container {
     display: block;
-    top: 10%;
+    /*    top: 10%;*/
     padding-top: 5%;
     position: relative;
     height: 90%;
 }
-
 .animate-answer-choices {
     display: block;
     top: 10%;
     position: relative;
     height: 90%;
 }
-
 .headline2 {
     font-size: 1.5rem;
     font-family: 'Judson', serif;
     margin: 0 auto;
     margin-bottom: .8rem;
 }
-
 .headline-score {
     font-size: 1rem;
     font-family: 'Judson', serif;
     margin: 0 auto;
 }
-
 
 /** QUESTION PAGE **/
 
@@ -171,35 +147,35 @@ ion-content {
     width: 90%;
     margin: 0 auto;
 }
-
 .general-question-input {
     width: 100%;
     border: 1px solid black !important;
     margin-bottom: 20px;
 }
-
 .question-submit-text {
     font-family: 'Judson', serif;
     font-size: 1rem;
     padding: 5px;
 }
 
-
 /*** ANIMATIONS **/
 
 .question-container.ng-hide-add {
     animation: 0.5s slideInUp ease;
 }
-
 .question-container.ng-hide-remove {
     animation: 0.5s slideOutUp ease;
 }
-
 .show-container {
     display: block !important;
     animation: 0.5s slideInUp ease;
 }
-
+.avatar.ng-hide-add {
+    animation: 0.1s fadeIn ease;
+}
+.avatar.ng-hide-remove {
+    animation: 0.1s fadeIn ease;
+}
 
 /*
 .question-container.ng-hide {
@@ -245,7 +221,6 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-
 @keyframes slideInUp {
     from {
         -webkit-transform: translate3d(0, 100%, 0);
@@ -257,12 +232,10 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-
 .slideInUp {
     -webkit-animation-name: slideInUp;
     animation-name: slideInUp;
 }
-
 @-webkit-keyframes slideOutUp {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -274,7 +247,6 @@ ion-content {
         transform: translate3d(0, -100%, 0);
     }
 }
-
 @keyframes slideOutUp {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -286,12 +258,10 @@ ion-content {
         transform: translate3d(0, -100%, 0);
     }
 }
-
 .slideOutUp {
     -webkit-animation-name: slideOutUp;
     animation-name: slideOutUp;
 }
-
 @-webkit-keyframes slideOutLeft {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -303,7 +273,6 @@ ion-content {
         transform: translate3d(-100%, 0, 0);
     }
 }
-
 @keyframes slideOutLeft {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -315,12 +284,10 @@ ion-content {
         transform: translate3d(-100%, 0, 0);
     }
 }
-
 .slideOutLeft {
     -webkit-animation-name: slideOutLeft;
     animation-name: slideOutLeft;
 }
-
 @-webkit-keyframes slideInRight {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
@@ -332,7 +299,6 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-
 @keyframes slideInRight {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
@@ -344,12 +310,10 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-
 .slideInRight {
     -webkit-animation-name: slideInRight;
     animation-name: slideInRight;
 }
-
 @-webkit-keyframes fadeInRightBig {
     from {
         opacity: 0;
@@ -362,7 +326,6 @@ ion-content {
         transform: none;
     }
 }
-
 @keyframes fadeInRightBig {
     from {
         opacity: 0;
@@ -375,12 +338,10 @@ ion-content {
         transform: none;
     }
 }
-
 .fadeInRightBig {
     -webkit-animation-name: fadeInRightBig;
     animation-name: fadeInRightBig;
 }
-
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
@@ -389,7 +350,6 @@ ion-content {
         opacity: 1;
     }
 }
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -398,39 +358,33 @@ ion-content {
         opacity: 1;
     }
 }
-
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
-
 
 /** new animations **/
 
 .item-animate {
     left: 0;
 }
-
 .item-animate.ng-hide-add,
 .item-animate.ng-hide-remove {
     display: block !important;
     left: 0;
 }
-
 .item-animate-point.ng-hide-add {
     -webkit-animation: 1s hide;
     animation: 1s hide;
     opacity: 0;
     top: -79%;
 }
-
 .item-animate-answer.ng-hide-remove {
     -webkit-animation: 1s show;
     animation: 1s show;
     /*    opacity: 0;*/
     /*    top: 0%;*/
 }
-
 @keyframes hide {
     from {
         left: 0;
@@ -439,7 +393,6 @@ ion-content {
         left: -100%;
     }
 }
-
 @-webkit-keyframes hide {
     from {
         left: 0;
@@ -448,20 +401,17 @@ ion-content {
         left: -100%;
     }
 }
-
 .item-animate-point.ng-hide-remove {
     -webkit-animation: 1s show;
     animation: 1s show;
     /*    opacity: 0;*/
-    top: -80%;
+    top: -90%;
 }
-
 .item-animate-answer.ng-hide-add {
     -webkit-animation: 1s hide;
     animation: 1s hide;
     top: 10%;
 }
-
 @keyframes show {
     from {
         left: 100%;
@@ -470,7 +420,6 @@ ion-content {
         left: 0;
     }
 }
-
 @-webkit-keyframes show {
     from {
         left: 100%;
@@ -480,7 +429,6 @@ ion-content {
     }
 }
 
-
 /** MODAL **/
 
 .description-header {
@@ -489,22 +437,21 @@ ion-content {
     margin-top: 7px;
     font-size: 1.7rem;
 }
-
 .description-date {
     font-family: 'Judson', serif;
     margin-bottom: 0px;
 }
-
 .description-info {
     font-family: 'Judson', serif;
     font-size: 1rem;
 }
-
 .description-more-info {
     font-family: 'Judson', serif;
     font-size: 1rem;
 }
-
 .description-quote {
     font-family: 'Montserrat', sans-serif;
+}
+.finished-container {
+    text-align: center;
 }

@@ -624,7 +624,19 @@ angular.module('starter.controllers', [])
                     $scope.startWatching('q');
                     $scope.canShake = true;
                     //                    $scope.stopWatching();
-                }, 5000);
+                }, 2000);
+
+            }
+            if (question == 'r') {
+                $scope.answerQuestion();
+                //                $scope.stopWatching();
+                $scope.startOver();
+                $timeout(function startWatchingThenStop() {
+                    $scope.startWatching('q');
+                    $scope.startOver();
+                    $scope.canShake = true;
+                    //                    $scope.stopWatching();
+                }, 2000);
 
             }
 
