@@ -1,0 +1,177 @@
+<ion-view view-title="Quiz Page">
+    <ion-content scroll="false">
+
+
+        <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
+            <h1>Welcome to black magic</h1>
+            <p>to start playing press the button below and test your knowledge of black people!!!</p>
+            <div class="row">
+                <img style="margin: 0 auto;" src="img/avatars/waving.gif" ng-click="startPlaying(); shakeMotionFunction('q')">
+            </div>
+            <div class="row" style="text-align:center">
+                <button class="button start-playing-button" ng-click="startPlaying(); shakeMotionFunction('q')">Press me to start</button>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="question-container">
+                <div style="display:table-row">
+                    <div class="question">
+                        <div ng-if="questionAsked == true">
+                            <span>{{currQuestion.question}}</span>
+                        </div>
+                        <div ng-if="questionAsked == false">
+                            <span>{{currQuestion.answer}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: table-row" class="background-pane">
+                    <div ng-if="questionAsked == false" ng-hide="hasStartedPlaying == 'almost' " class="row right-footer" ng-click="modal.show()">
+                        <span>Click to Learn More</span>
+                    </div>
+                </div>
+            </div>
+            <div class="answer-choices-container" ng-hide="hasStartedPlaying == 'almost' ">
+                <div class="animate-answer-choices item-animate-answer" ng-show="questionAsked == true && score != quizLength-1">
+                    <div class="row">
+                        <button class="answer-choices" ng-click="chooseChoice1(); shakeMotionFunction('a')" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
+                            <span>{{currQuestion.choice1}}</span>
+                        </button>
+                        <button class="answer-choices" ng-click="chooseChoice2(); shakeMotionFunction('a')" ng-class="{'selected': choice2Selected}">
+                            <span>{{currQuestion.choice2}}</span>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button class="answer-choices" ng-click="chooseChoice3(); shakeMotionFunction('a')" ng-class="{'selected': choice3Selected}">
+                            <span>{{currQuestion.choice3}}</span>
+                        </button>
+                        <button class="answer-choices" ng-click="chooseChoice4(); shakeMotionFunction('a')" ng-class="{'selected': choice4Selected}">
+                            <span>{{currQuestion.choice4}}</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- for the group of answers right before the finished screen-->
+                <div class="animate-answer-choices item-animate-answer" ng-show="questionAsked == true && score == quizLength-1">
+                    <div class="row">
+                        <button class="answer-choices" ng-click="chooseChoice1(); shakeMotionFunction('r')" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
+                            <span>r{{currQuestion.choice1}}</span>
+                        </button>
+                        <button class="answer-choices" ng-click="chooseChoice2(); shakeMotionFunction('r')" ng-class="{'selected': choice2Selected}">
+                            <span>r{{currQuestion.choice2}}</span>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button class="answer-choices" ng-click="chooseChoice3(); shakeMotionFunction('r')" ng-class="{'selected': choice3Selected}">
+                            <span>r{{currQuestion.choice3}}</span>
+                        </button>
+                        <button class="answer-choices" ng-click="chooseChoice4(); shakeMotionFunction('r')" ng-class="{'selected': choice4Selected}">
+                            <span>r{{currQuestion.choice4}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="animate-point-container item-animate-point" ng-show="questionAsked == false">
+                    <div class="row" ng-show="youGotItRight">
+                        <span class="headline">Correct!</span>
+                    </div>
+                    <div class="row" ng-show="youGotItRight">
+                        <span class="headline2">Points For You!</span>
+                    </div>
+                    <div class="row" ng-show="!youGotItRight">
+                        <span class="headline">Wrong!</span>
+                    </div>
+                    <div class="row" ng-show="!youGotItRight">
+                        <span class="headline2">No Points For You</span>
+                    </div>
+                    <div class="row">
+                        <span class="headline-score" ng-show="hasFinishedPlaying != true">Score: {{score}}</span>
+                        <span class="headline-score" ng-show="hasFinishedPlaying == true">Final Score: {{score}}/{{quizLength}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="avatar-container" ng-if="hasFinishedPlaying == false">
+                <div ng-if="questionAsked == false ">
+                    <div class="button-clear avatar" ng-click="askQuestion()" ng-hide="hasStartedPlaying == 'almost' ">
+                        <div>
+                            <img class="avatar-image" src="img/avatars/dance-2.gif" ng-show="youGotItRight">
+                        </div>
+                        <div>
+                            <img class="avatar-image" src="img/avatars/tantrum.gif" ng-show="!youGotItRight">
+                        </div>
+                        <div class="avatar-message">
+                            <span>Shake me for the question</span>
+                        </div>
+                    </div>
+                    <div class="button-clear avatar" ng-click="askQuestion()" ng-show="hasStartedPlaying == 'almost' ">
+                        <div>
+                            <img class="avatar-image" src="img/avatars/blinking.gif">
+                        </div>
+                        <div class="avatar-message">
+                            <span>Shake me to start</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="questionAsked == true">
+                    <div class="button-clear avatar" ng-click="answerQuestion()" ng-disabled="!showAvatarAnswerMessage">
+                        <div>
+                            <img class="avatar-image" src="img/avatars/blinking.gif" ng-show="!gif">
+                        </div>
+                        <div>
+                            <img class="avatar-image" src="img/avatars/blinking.gif" ng-show="gif">
+                        </div>
+                        <div class="avatar-message" ng-show="showAvatarAnswerMessage">
+                            <span>Shake me for the answer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="hasFinishedPlaying == true" class="finished-container">
+                <div ng-show="score == quizLength">
+                    <h1>You Won!</h1>
+                    <img class="avatar-image" src="img/avatars/jumping.gif">
+                </div>
+                <div ng-show="score == 0">
+                    <h1>You Lost</h1>
+                    <img class="avatar-image" src="img/avatars/crying.gif">
+                </div>
+                <div ng-hide="score == quizLength || score == 0">
+                    <h1>Not too shabby..</h1>
+                    <h3>Think you can do it again</h3>
+                    <img class="avatar-image" src="img/avatars/blinking.gif">
+                </div>
+
+
+                <div class="row" style="text-align:center">
+                    <button class="button start-playing-button" ng-click="startOver()">Press me to start over</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <!--
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New Contact</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+-->
+        <button class="button button-clear button-primary" style="margin-top: 10px;" ng-click="modal.hide()">Close</button>
+        <ion-content class="padding has-header">
+            <img class="decription-image" src="{{currQuestion.imageUrl}}" />
+            <h3 class="description-header">{{currQuestion.shortDescription}}</h3>
+            <p class="description-date">{{currQuestion.dateDescription}}</p>
+            <hr/>
+
+            <span class="description-info">{{currQuestion.info}}</span>
+            <p class="description-more-info">{{currQuestion.longDescription}}</p>
+            <div ng-if="currQuestion.quote.length > 1">
+                <blockquote>
+                    <p class="description-quote">{{currQuestion.quote}}</p>
+                </blockquote>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
