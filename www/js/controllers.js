@@ -412,7 +412,7 @@ angular.module('starter.controllers', [])
         $scope.showAvatarAnswerMessage = true;
 
         if ($scope.currQuestion.answer == $scope.currQuestion.choice1) {
-            console.log("you got it right");
+            //            console.log("you got it right");
             $scope.youGotItRight = true;
         } else {
             console.log("you wrong bro");
@@ -420,12 +420,10 @@ angular.module('starter.controllers', [])
         }
         $scope.answerQuestion();
         $timeout(function startWatchingThenStop() {
-            if ($scope.currQuizNumber == $scope.quizLength + 1) {
-                $scope.startWatching('r');
-            } else {
-                $scope.startWatching('q');
-                $scope.canShake = true;
-            }
+
+            $scope.startWatching('q');
+            $scope.canShake = true;
+
             //                    $scope.stopWatching();
         }, 2000);
 
@@ -438,7 +436,7 @@ angular.module('starter.controllers', [])
         $scope.showAvatarAnswerMessage = true;
 
         if ($scope.currQuestion.answer == $scope.currQuestion.choice2) {
-            console.log("you got it right");
+            //            console.log("you got it right");
             $scope.youGotItRight = true;
         } else {
             console.log("you wrong bro");
@@ -448,12 +446,10 @@ angular.module('starter.controllers', [])
         $scope.answerQuestion();
 
         $timeout(function startWatchingThenStop() {
-            if ($scope.currQuizNumber == $scope.quizLength + 1) {
-                $scope.startWatching('r');
-            } else {
-                $scope.startWatching('q');
-                $scope.canShake = true;
-            }
+
+            $scope.startWatching('q');
+            $scope.canShake = true;
+
             //                    $scope.stopWatching();
         }, 2000);
 
@@ -466,7 +462,7 @@ angular.module('starter.controllers', [])
         $scope.showAvatarAnswerMessage = true;
 
         if ($scope.currQuestion.answer == $scope.currQuestion.choice3) {
-            console.log("you got it right");
+            //            console.log("you got it right");
             $scope.youGotItRight = true;
         } else {
             console.log("you wrong bro");
@@ -475,12 +471,10 @@ angular.module('starter.controllers', [])
 
         $scope.answerQuestion();
         $timeout(function startWatchingThenStop() {
-            if ($scope.currQuizNumber == $scope.quizLength + 1) {
-                $scope.startWatching('r');
-            } else {
-                $scope.startWatching('q');
-                $scope.canShake = true;
-            }
+
+            $scope.startWatching('q');
+            $scope.canShake = true;
+
             //                    $scope.stopWatching();
         }, 2000);
 
@@ -493,7 +487,7 @@ angular.module('starter.controllers', [])
         $scope.showAvatarAnswerMessage = true;
 
         if ($scope.currQuestion.answer == $scope.currQuestion.choice4) {
-            console.log("you got it right");
+            //            console.log("you got it right");
             $scope.youGotItRight = true;
         } else {
             console.log("you wrong bro");
@@ -502,12 +496,10 @@ angular.module('starter.controllers', [])
 
         $scope.answerQuestion();
         $timeout(function startWatchingThenStop() {
-            if ($scope.currQuizNumber == $scope.quizLength + 1) {
-                $scope.startWatching('r');
-            } else {
-                $scope.startWatching('q');
-                $scope.canShake = true;
-            }
+
+            $scope.startWatching('q');
+            $scope.canShake = true;
+
             //                    $scope.stopWatching();
         }, 2000);
     }
@@ -523,28 +515,36 @@ angular.module('starter.controllers', [])
     }
 
     $scope.askQuestion = function () {
-        $scope.hasStartedPlaying = 'yes';
-        $scope.choice1Selected = false;
-        $scope.choice2Selected = false;
-        $scope.choice3Selected = false;
-        $scope.choice4Selected = false;
-        var chosenQuestion = Math.floor(Math.random() * (sportsQuestions.length - 0)) + 0;
-        //        console.log("chosenQuestion " + chosenQuestion);
+        if ($scope.currQuizNumber == $scope.quizLength) {
+            $scope.hasFinishedPlaying = true;
+            $scope.currQuestion = null;
+            $scope.hasStartedPlaying = 'almost';
+        } else {
+            $scope.hasStartedPlaying = 'yes';
+            $scope.choice1Selected = false;
+            $scope.choice2Selected = false;
+            $scope.choice3Selected = false;
+            $scope.choice4Selected = false;
+            var chosenQuestion = Math.floor(Math.random() * (sportsQuestions.length - 0)) + 0;
+            //        console.log("chosenQuestion " + chosenQuestion);
 
-        $scope.youGotItRight = false;
+            $scope.youGotItRight = false;
 
-        $scope.currQuizNumber++;
-        console.log("currQuizNumber " + $scope.currQuizNumber);
-        $scope.currQuestion = sportsQuestions[chosenQuestion];
+            $scope.currQuizNumber++;
 
-        $scope.questionAsked = true;
 
-        $scope.gif = true;
 
-        $timeout(function hideTheGif() {
-            $scope.gif = false;
-        }, 2000);
+            console.log("currQuizNumber " + $scope.currQuizNumber);
+            $scope.currQuestion = sportsQuestions[chosenQuestion];
 
+            $scope.questionAsked = true;
+
+            $scope.gif = true;
+
+            $timeout(function hideTheGif() {
+                $scope.gif = false;
+            }, 2000);
+        }
     }
 
     $scope.answerQuestion = function () {
@@ -552,6 +552,7 @@ angular.module('starter.controllers', [])
         $scope.questionAnswered = false;
         $scope.gif = true;
         $scope.showAvatarAnswerMessage = false;
+        $scope.canShake = false;
 
         if ($scope.youGotItRight == true) {
             console.log("points for you!");
@@ -559,7 +560,7 @@ angular.module('starter.controllers', [])
         }
 
         //        if ($scope.currQuizNumber == $scope.quizLength) {
-        //            $scope.hasFinishedPlaying = true;
+        //$scope.hasFinishedPlaying = true;
         //        }
 
         $timeout(function hideTheGif() {
@@ -573,6 +574,14 @@ angular.module('starter.controllers', [])
         $scope.currQuizNumber = 0;
         $scope.hasFinishedPlaying = false;
         $scope.score = 0;
+
+        $timeout(function startWatchingThenStop() {
+
+            $scope.startWatching('q');
+            $scope.canShake = true;
+
+            //                    $scope.stopWatching();
+        }, 2000);
     }
 
 

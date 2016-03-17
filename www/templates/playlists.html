@@ -15,7 +15,7 @@
 
 
         <div class="container">
-            <div class="question-container">
+            <div class="question-container" ng-show="hasFinishedPlaying == false">
                 <div style="display:table-row">
                     <div class="question">
                         <div ng-if="questionAsked == true">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="answer-choices-container" ng-show="hasStartedPlaying == 'yes'">
+            <div class="answer-choices-container" ng-show="hasStartedPlaying == 'yes' && hasFinishedPlaying == false">
                 <div class="animate-answer-choices item-animate-answer" ng-show="questionAsked == true">
                     <div class="row">
                         <button class="answer-choices" ng-click="chooseChoice1()" ng-model="answerChoice1" ng-class="{'selected': choice1Selected}">
@@ -75,12 +75,12 @@
                 <div ng-if="questionAsked == false ">
                     <div class="button-clear avatar" ng-click="askQuestion()" ng-hide="hasStartedPlaying == 'almost' ">
                         <div>
-                            <img class="avatar-image" src="img/avatars/dance-2.gif" ng-show="youGotItRight">
+                            <img class="avatar-image" src="img/avatars/dance-2.gif" ng-if="youGotItRight">
                         </div>
                         <div>
-                            <img class="avatar-image" src="img/avatars/tantrum.gif" ng-show="!youGotItRight">
+                            <img class="avatar-image" src="img/avatars/tantrum.gif" ng-if="!youGotItRight">
                         </div>
-                        <div class="avatar-message">
+                        <div class="avatar-message" ng-show="canShake">
                             <span>Shake me for the question</span>
                         </div>
                     </div>
@@ -94,12 +94,9 @@
                     </div>
                 </div>
                 <div ng-if="questionAsked == true">
-                    <div class="button-clear avatar" ng-click="answerQuestion()" ng-disabled="!showAvatarAnswerMessage">
+                    <div class="button-clear avatar">
                         <div>
-                            <img class="avatar-image" src="img/avatars/blinking.gif" ng-show="!gif">
-                        </div>
-                        <div>
-                            <img class="avatar-image" src="img/avatars/blinking.gif" ng-show="gif">
+                            <img class="avatar-image" src="img/avatars/blinking.gif">
                         </div>
                         <div class="avatar-message" ng-show="showAvatarAnswerMessage">
                             <span>Shake me for the answer</span>
