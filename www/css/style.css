@@ -2,13 +2,7 @@
 
 .container {
     height: 100vh;
-    /*    width: 100vw;*/
     position: relative;
-    /*    background-image: url(../img/darkBg.png);*/
-}
-.question-container {
-    height: 20% !important;
-    display: none;
 }
 .avatar-container {
     height: 45%;
@@ -16,11 +10,9 @@
 }
 .avatar {
     padding-top: 10px;
-    /*    padding-left: 35%;*/
 }
 .question-container {
     height: 20% !important;
-    /*    background-color: cadetblue;*/
     padding: 1rem;
     background-image: url(../img/questionBg.jpeg);
     background-size: cover;
@@ -34,14 +26,12 @@
     height: 80%;
     width: 90%;
     padding: 10px;
-    /*    background-color: beige;*/
     background-image: url(../img/overlay70.png);
     background-size: cover;
     margin: 0 auto;
     display: table-cell;
     vertical-align: middle;
     vertical-align: middle;
-    /*    line-height: 2rem;*/
 }
 .background-pane {
     background-image: url(../img/overlay70.png);
@@ -49,9 +39,7 @@
 }
 .answer-choices-container {
     height: 25%;
-    /*    background-color: aqua;*/
     padding-top: 1rem;
-    /*    border-bottom: 2px solid black;*/
 }
 .answer-choices {
     background-color: whitesmoke;
@@ -87,13 +75,6 @@
     z-index: 999;
     height: 100%;
     padding: 20px;
-    /*    opacity: .5;*/
-}
-ion-content {
-    /*
-    background-image: url(../img/darkBg.png);
-    background-size: cover;
-*/
 }
 .start-playing-button {
     width: 80%;
@@ -118,7 +99,6 @@ ion-content {
 }
 .animate-point-container {
     display: block;
-    /*    top: 10%;*/
     padding-top: 5%;
     position: relative;
     height: 90%;
@@ -161,59 +141,21 @@ ion-content {
 /*** ANIMATIONS **/
 
 .question-container.ng-hide-add {
-    animation: 0.5s slideInUp ease;
-}
-.question-container.ng-hide-remove {
     animation: 0.5s slideOutUp ease;
 }
-.show-container {
-    display: block !important;
-    animation: 0.5s slideInUp ease;
+.question-container.ng-hide-remove {
+    animation: 0.5s slideInDown ease;
 }
 .avatar.ng-hide-add {
-    animation: 0.1s fadeIn ease;
-}
-.avatar.ng-hide-remove {
     animation: 0.1s fadeOut ease;
 }
-
-/*
-.question-container.ng-hide {
-  height:0;
-  opacity:0;
-  padding:0;
+.avatar.ng-hide-remove {
+    animation: 0.1s fadeIn ease;
 }
-
-.question-container.ng-hide-remove,
-.question-container.ng-hide-add {
-  display: block !important;
-  transition: all linear 300ms;
-}
-*/
-
-
-/*
-.animate-answer-choices.ng-leave {
-    animation: 0.5s slideOutLeft ease;
-}
-
-.animate-answer-choices.ng-enter {
-    animation: 0.5s slideInRight ease;
-}
-
-.animate-point-container.ng-leave {
-    animation: 0.5s slideOutLeft ease;
-}
-
-.animate-point-container.ng-enter {
-    animation: 0.5s fadeIn ease;
-}
-*/
-
-@-webkit-keyframes slideInUp {
+@-webkit-keyframes slideInDown {
     from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
         visibility: visible;
     }
     to {
@@ -221,10 +163,10 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-@keyframes slideInUp {
+@keyframes slideInDown {
     from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
         visibility: visible;
     }
     to {
@@ -232,9 +174,9 @@ ion-content {
         transform: translate3d(0, 0, 0);
     }
 }
-.slideInUp {
-    -webkit-animation-name: slideInUp;
-    animation-name: slideInUp;
+.slideInDown {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
 }
 @-webkit-keyframes slideOutUp {
     from {
@@ -322,8 +264,17 @@ ion-content {
 .item-animate-answer.ng-hide-remove {
     -webkit-animation: 1s show;
     animation: 1s show;
+}
+.item-animate-point.ng-hide-remove {
+    -webkit-animation: 1s show;
+    animation: 1s show;
     /*    opacity: 0;*/
-    /*    top: 0%;*/
+    top: -90%;
+}
+.item-animate-answer.ng-hide-add {
+    -webkit-animation: 1s hide;
+    animation: 1s hide;
+    top: 10%;
 }
 @keyframes hide {
     from {
@@ -340,17 +291,6 @@ ion-content {
     to {
         left: -100%;
     }
-}
-.item-animate-point.ng-hide-remove {
-    -webkit-animation: 1s show;
-    animation: 1s show;
-    /*    opacity: 0;*/
-    top: -90%;
-}
-.item-animate-answer.ng-hide-add {
-    -webkit-animation: 1s hide;
-    animation: 1s hide;
-    top: 10%;
 }
 @keyframes show {
     from {
@@ -394,4 +334,8 @@ ion-content {
 }
 .finished-container {
     text-align: center;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    width: 100%;
 }

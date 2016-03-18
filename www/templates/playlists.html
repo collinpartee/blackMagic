@@ -9,7 +9,7 @@
                 <img style="margin: 0 auto;" src="img/avatars/waving.gif" ng-click="startPlaying(); shakeMotionFunction('q')">
             </div>
             <div class="row" style="text-align:center">
-                <button class="button start-playing-button" ng-click="startPlaying(); shakeMotionFunction('q')">Press me to start</button>
+                <button class="button button-positive start-playing-button" ng-click="startPlaying(); shakeMotionFunction('q')">Press me to start</button>
             </div>
         </div>
 
@@ -105,6 +105,7 @@
                 </div>
             </div>
             <div ng-if="hasFinishedPlaying == true" class="finished-container">
+                <h1>Final Score: {{score}}/{{quizLength}}</h1>
                 <div ng-show="score == quizLength">
                     <h1>You Won!</h1>
                     <img class="avatar-image" src="img/avatars/jumping.gif">
@@ -121,7 +122,7 @@
 
 
                 <div class="row" style="text-align:center">
-                    <button class="button start-playing-button" ng-click="startOver()">Press me to start over</button>
+                    <button class="button start-playing-button button-positive" ng-click="startOver()">Press me to start over</button>
                 </div>
             </div>
         </div>
