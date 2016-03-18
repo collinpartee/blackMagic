@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function ($scope, $timeout, $ionicModal, $cordovaDeviceMotion, $ionicPlatform) {
+.controller('BlackHistoryTriviaCtrl', function ($scope, $timeout, $ionicModal, $cordovaDeviceMotion, $ionicPlatform) {
 
 
     $scope.gif = false;
