@@ -71,7 +71,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: beige;
+    background-color: white;
     z-index: 999;
     height: 100%;
     padding: 20px;
@@ -91,7 +91,7 @@
     max-height: 40vh;
 }
 .headline {
-    font-family: 'Quando', serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 2.2rem;
     margin: 0 auto;
     margin-bottom: .9rem;
@@ -111,13 +111,13 @@
 }
 .headline2 {
     font-size: 1.5rem;
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     margin-bottom: .8rem;
 }
 .headline-score {
     font-size: 1rem;
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
 }
 
@@ -133,7 +133,7 @@
     margin-bottom: 20px;
 }
 .question-submit-text {
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     padding: 5px;
 }
@@ -312,21 +312,23 @@
 /** MODAL **/
 
 .description-header {
-    font-family: 'Quado', serif;
+    font-family: 'Jomhuria', cursive;
     margin-bottom: 0px !important;
     margin-top: 7px;
-    font-size: 1.7rem;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 1.5rem;
 }
 .description-date {
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     margin-bottom: 0px;
 }
 .description-info {
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
 }
 .description-more-info {
-    font-family: 'Judson', serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
 }
 .description-quote {
@@ -338,4 +340,18 @@
     position: absolute;
     top: 10%;
     width: 100%;
+}
+
+.welcome-text{
+    font-family: 'Jomhuria', cursive;
+    margin: 0;
+    margin-top: -25px;
+    font-size: 3rem;
+}
+.welcome-text-dtl{
+    font-size: 4rem;
+}
+
+.all-text{
+    font-family: 'Open Sans', sans-serif;
 }

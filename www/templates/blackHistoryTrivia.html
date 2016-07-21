@@ -3,12 +3,13 @@
 
 
         <div class="first-time-message" ng-show="hasStartedPlaying == 'no' ">
-            <h1>Welcome to black magic</h1>
-            <p>to start playing press the button below and test your knowledge of black people!!!</p>
+            <h2 style="display: block; text-align:center" class="welcome-text">Welcome to</h2> 
+            <h1 style="display: block; text-align:center" class="welcome-text welcome-text-dtl">Black Magic</h1>
+            <p style="text-align:center;" class="all-text">to start playing press the button below and test your knowledge of black people!!!</p>
             <div class="row">
                 <img style="margin: 0 auto;" src="img/avatars/waving.gif" ng-click="startPlaying(); shakeMotionFunction('q')">
             </div>
-            <div class="row" style="text-align:center">
+            <div class="row" style="text-align:center; margin-top:15px;">
                 <button class="button button-positive start-playing-button" ng-click="startPlaying(); shakeMotionFunction('q')">Press me to start</button>
             </div>
         </div>
@@ -28,7 +29,7 @@
                 </div>
                 <div style="display: table-row" class="background-pane">
                     <div ng-if="questionAsked == false" ng-hide="hasStartedPlaying == 'almost' " class="row right-footer" ng-click="modal.show()">
-                        <span>Click to Learn More</span>
+                        <span style="color: purple">Click to Learn More</span>
                     </div>
                 </div>
             </div>

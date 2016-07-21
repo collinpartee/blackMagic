@@ -32,12 +32,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         controller: 'AppCtrl'
     })
 
-    .state('app.search', {
-        url: '/search',
+    .state('app.categories', {
+        url: '/categories',
         views: {
             'menuContent': {
-                templateUrl: 'templates/search.html',
-                controller: 'PlaylistsCtrl'
+                templateUrl: 'templates/categories.html'
             }
         }
     })
@@ -70,5 +69,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/blackHistoryTrivia');
+
+    $urlRouterProvider.otherwise('/app/playlists');
 });
